@@ -2,6 +2,12 @@
 
 Node.js from scratch with no frameworks and no dependencies.
 
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [License](#license)
+
 ## Prerequisites
 
 Make sure you have Node.js installed on your machine. You can download it at [nodejs.org](https://nodejs.org/).
