@@ -1,0 +1,13 @@
+{
+  "name": "back-to-the-roots-nodejs",
+  "version": "1.0.0",
+  "description": "Node.js from scratch with no frameworks and no dependencies.",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Ricardo Alves <ricardospalves@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20.12.2"
+  }
+}
