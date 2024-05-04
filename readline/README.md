@@ -4,7 +4,11 @@ Node.js from scratch with no frameworks and no dependencies.
 
 ## Readline
 
-he readline module in Node.js provides an interface for reading data from a readable stream, such as the terminal. It allows interacting with the user through questions, capturing their responses, and performing other line-reading operations asynchronously. It is widely used in command-line applications and other contexts where user interaction is needed.
+The readline module in Node.js provides an interface for reading data from a
+readable stream, such as the terminal. It allows interacting with the user
+through questions, capturing their responses, and performing other line-reading
+operations asynchronously. It is widely used in command-line applications and
+other contexts where user interaction is needed.
 
 ## Usage
 
