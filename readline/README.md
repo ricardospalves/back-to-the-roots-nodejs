@@ -1,23 +1,25 @@
 # 🐢🚀 Back to the roots: Node.js
 
-Node.js from scratch with no frameworks and no dependencies.
+Node.js do zero sem frameworks e sem dependências.
+
+🇺🇸 This doc have been translated into [English](https://github.com/ricardospalves/back-to-the-roots-nodejs/blob/main/readline/README_EN.md).
 
 ## Readline
 
-The readline module in Node.js provides an interface for reading data from a
-readable stream, such as the terminal. It allows interacting with the user
-through questions, capturing their responses, and performing other line-reading
-operations asynchronously. It is widely used in command-line applications and
-other contexts where user interaction is needed.
+O módulo **readline** no Node.js fornece uma interface para ler dados de um
+fluxo de entrada legível, como o terminal. Ele permite interagir com o usuário
+através de perguntas, capturando suas respostas e realizando outras operações de
+leitura de linha de forma assíncrona. É amplamente utilizado em aplicativos de
+linha de comando e outros contextos onde a interação do usuário é necessária.
 
-## Usage
+## Uso
 
-1. Follow the instructions for the [prerequisites](https://github.com/ricardospalves/back-to-the-roots-nodejs?tab=readme-ov-file#prerequisites) and [installation](https://github.com/ricardospalves/back-to-the-roots-nodejs?tab=readme-ov-file#installation).
+1. Siga as instruções para os [pré-requisitos](https://github.com/ricardospalves/back-to-the-roots-nodejs?tab=readme-ov-file#prerequisites) e [instalação](https://github.com/ricardospalves/back-to-the-roots-nodejs?tab=readme-ov-file#installation).
 
-2. Now, run the main.js file with Node.js:
+2. Agora, execute o arquivo main.js com o Node.js:
 
 ```bash
 node readline/main.js
 ```
 
-3. Now you can answer the question in the terminal.
+3. Agora você pode responder à pergunta no terminal.

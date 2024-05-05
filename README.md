@@ -1,31 +1,33 @@
 # 🐢🚀 Back to the roots: Node.js
 
-Node.js from scratch with no frameworks and no dependencies.
+Node.js do zero sem frameworks e sem dependências.
 
-## Table of Contents
+🇺🇸 This doc have been translated into [English](https://github.com/ricardospalves/back-to-the-roots-nodejs/blob/main/README_EN.md).
 
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [License](#license)
+## Tabela de conteúdos
 
-## Prerequisites
+- [Pré-requisitos](#pré-requisitos)
+- [Instalação](#instalação)
+- [Licensa](#licensa)
 
-Make sure you have Node.js installed on your machine. You can download it at [nodejs.org](https://nodejs.org/).
+## Pré-requisitos
 
-## Installation
+Tenha certeza que tenha o Node.js instalado na sua máquina. Você pode baixá-lo em [nodejs.org](https://nodejs.org/).
 
-1. Clone this repository to your local machine:
+## Instalação
+
+1. Clone este repositório para a sua máquina:
 
 ```bash
 https://github.com/ricardospalves/back-to-the-roots-nodejs
 ```
 
-2. Navigate to the repository directory:
+2. Navegue para a pasta do repositório:
 
 ```bash
 cd back-to-the-roots-nodejs
 ```
 
-## License
+## Licensa
 
-This project is free and open source software released under the [MIT License](https://github.com/ricardospalves/back-to-the-roots-nodejs/blob/main/LICENSE).
+Este projeto é software livre e de código aberto lançado sob a [Licença MIT](https://github.com/ricardospalves/back-to-the-roots-nodejs/blob/main/LICENSE).
