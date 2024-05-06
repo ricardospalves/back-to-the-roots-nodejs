@@ -8,7 +8,7 @@ Node.js do zero sem frameworks e sem dependências.
 
 - [Pré-requisitos](#pré-requisitos)
 - [Instalação](#instalação)
-- [Licensa](#licensa)
+- [Licença](#licença)
 
 ## Pré-requisitos
 
@@ -28,6 +28,6 @@ https://github.com/ricardospalves/back-to-the-roots-nodejs
 cd back-to-the-roots-nodejs
 ```
 
-## Licensa
+## Licença
 
 Este projeto é software livre e de código aberto lançado sob a [Licença MIT](https://github.com/ricardospalves/back-to-the-roots-nodejs/blob/main/LICENSE).
