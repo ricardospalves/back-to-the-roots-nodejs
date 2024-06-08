@@ -6,4 +6,8 @@ export class BooksService {
   getBooks() {
     return this.repository.getBooks();
   }
+
+  registerBook({ id, name, author }) {
+    return this.repository.pushBook({ id, name, author });
+  }
 }
