@@ -8,7 +8,7 @@ export class GetBooksController {
   handle(request, response) {
     const books = this.getBooksUseCase.execute();
 
-    response.writeHead(201, DEFAULT_HEADER);
+    response.writeHead(200, DEFAULT_HEADER);
     response.write(
       JSON.stringify({
         results: books,
