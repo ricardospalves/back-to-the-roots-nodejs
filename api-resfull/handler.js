@@ -1,5 +1,5 @@
 import { DEFAULT_HEADER } from "./constants/defaultHeader.js";
-import { booksRoute } from "./routes/books.js";
+import { booksRoute } from "./routes/books/index.js";
 
 const routes = {
   ...booksRoute,
