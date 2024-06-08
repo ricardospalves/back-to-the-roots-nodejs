@@ -11,12 +11,12 @@ export class CreateBookController {
     const data = await once(request, "data");
     const body = JSON.parse(data);
     const book = new BookEntity(body);
-
-    this.createBookUseCase.execute(book);
+    const bookID = await this.createBookUseCase.execute(book);
 
     response.writeHead(201, DEFAULT_HEADER);
     response.write(
       JSON.stringify({
+        bookID,
         message: "Livro cadastrado com sucesso.",
       })
     );

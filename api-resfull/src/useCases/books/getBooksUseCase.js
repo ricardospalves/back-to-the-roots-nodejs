@@ -4,6 +4,6 @@ export class GetBooksUseCase {
   }
 
   execute() {
-    return this.booksService.getBooks();
+    return this.booksService.getAll();
   }
 }

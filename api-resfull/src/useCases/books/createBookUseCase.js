@@ -4,6 +4,6 @@ export class CreateBookUseCase {
   }
 
   execute({ id, name, author }) {
-    return this.booksService.registerBook({ id, name, author });
+    return this.booksService.create({ id, name, author });
   }
 }

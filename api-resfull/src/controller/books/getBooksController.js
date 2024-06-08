@@ -5,8 +5,8 @@ export class GetBooksController {
     this.getBooksUseCase = getBooksUseCase;
   }
 
-  handle(request, response) {
-    const books = this.getBooksUseCase.execute();
+  async handle(request, response) {
+    const books = await this.getBooksUseCase.execute();
 
     response.writeHead(200, DEFAULT_HEADER);
     response.write(
