@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 
-export class BooksRepository {
+class BooksRepository {
   #books = [
     this.#create({
       author: "George Orwell",
@@ -27,4 +27,12 @@ export class BooksRepository {
   getBooks() {
     return this.#books;
   }
+
+  pushBook({ id, name, author }) {
+    this.#books.push({ id, name, author });
+  }
 }
+
+const booksRepository = new BooksRepository();
+
+export { booksRepository };
