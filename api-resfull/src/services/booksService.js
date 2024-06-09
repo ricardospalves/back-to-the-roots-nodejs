@@ -20,4 +20,10 @@ export class BooksService {
 
     return bookID;
   }
+
+  deleteByID(id) {
+    const bookID = this.repository.deleteByID(id);
+
+    return bookID;
+  }
 }

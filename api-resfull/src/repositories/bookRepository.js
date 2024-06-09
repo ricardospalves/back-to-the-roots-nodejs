@@ -54,4 +54,14 @@ export class BooksRepository {
 
     return books[bookIndex].id;
   }
+
+  async deleteByID(id) {
+    const books = await this.#fileContent();
+    const bookIndex = await this.#findBookIndexByID(id);
+    const deletedBook = books.splice(bookIndex, 1);
+
+    await this.#save(books);
+
+    return deletedBook[0].id;
+  }
 }
