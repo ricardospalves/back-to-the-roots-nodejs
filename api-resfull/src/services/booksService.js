@@ -14,4 +14,10 @@ export class BooksService {
 
     return bookID;
   }
+
+  updateByID(id, { name, author }) {
+    const bookID = this.repository.updateByID(id, { name, author });
+
+    return bookID;
+  }
 }
