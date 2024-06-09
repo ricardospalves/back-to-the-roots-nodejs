@@ -18,13 +18,13 @@ const routes = {
 
 const errorHandler = (response) => {
   return (error) => {
-    console.log("Something went wrong", error.stack);
+    console.log("Alguma coisa deu errado", error.stack);
 
     response.writeHead(500, DEFAULT_HEADER);
     response.write(
       JSON.stringify({
         error: true,
-        message: "Internal server error",
+        message: "Erro interno de servidor",
       })
     );
 
