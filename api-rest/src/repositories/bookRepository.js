@@ -37,6 +37,13 @@ export class BooksRepository {
     return bookIndex;
   }
 
+  async #findByID(id) {
+    const books = await this.#fileContent();
+    const book = books.find((item) => item.id === id);
+
+    return book;
+  }
+
   async updateByID(id, bookFields) {
     const books = await this.#fileContent();
     const bookIndex = await this.#findBookIndexByID(id);
@@ -63,5 +70,11 @@ export class BooksRepository {
     await this.#save(books);
 
     return deletedBook[0].id;
+  }
+
+  async getByID(id) {
+    const books = await this.#findByID(id);
+
+    return books;
   }
 }

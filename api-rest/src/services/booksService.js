@@ -26,4 +26,10 @@ export class BooksService {
 
     return bookID;
   }
+
+  getByID(id) {
+    const book = this.repository.getByID(id);
+
+    return book;
+  }
 }
