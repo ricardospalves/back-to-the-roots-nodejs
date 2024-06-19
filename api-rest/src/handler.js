@@ -1,30 +1,16 @@
 import { DEFAULT_HEADER } from "./constants/defaultHeader.js";
-import { booksRoute } from "./routes/books/index.js";
-
-const routes = {
-  ...booksRoute,
-  default: (request, response) => {
-    response.writeHead(404, DEFAULT_HEADER);
-    response.write(
-      JSON.stringify({
-        error: true,
-        message: "Route not found",
-      })
-    );
-
-    return response.end();
-  },
-};
+import { routes } from "./routes/index.js";
+import { removeTrailingSlash } from "./utils/removeTrailingSlash.js";
 
 const errorHandler = (response) => {
   return (error) => {
-    console.log("Alguma coisa deu errado", error.stack);
+    console.log("Something went wrong.", error.stack);
 
     response.writeHead(500, DEFAULT_HEADER);
     response.write(
       JSON.stringify({
         error: true,
-        message: "Erro interno de servidor",
+        message: "Internal server error.",
       })
     );
 
@@ -33,13 +19,40 @@ const errorHandler = (response) => {
 };
 
 export const handler = (request, response) => {
-  const { url, method } = request;
-  const { pathname } = new URL(`http://${request.headers.host}${url}`);
-  const pathnameWithoutTrailingSlash = pathname.replace(/\/$/, "");
-  const routeKey = `${pathnameWithoutTrailingSlash}:${method.toLowerCase()}`;
-  const routeChosen = routes[routeKey] ?? routes.default;
+  const method = request.method.toUpperCase();
+  const { pathname } = new URL(`http://${request.headers.host}${request.url}`);
+  const pathnameWithoutTrailingSlash = removeTrailingSlash(pathname);
+  let chosenRoute = routes?.[pathnameWithoutTrailingSlash]?.[method];
 
-  return Promise.resolve(routeChosen(request, response)).catch(
+  if (!chosenRoute) {
+    const routeKeys = Object.keys(routes).filter((key) => key.includes(":"));
+    const matchedKey = routeKeys.find((key) => {
+      const regex = new RegExp(`^${key.replace(/:[^/]+/g, "([^/]+)")}$`);
+      return regex.test(pathname);
+    });
+
+    if (matchedKey) {
+      const regex = new RegExp(`^${matchedKey.replace(/:[^/]+/g, "([^/]+)")}$`);
+      const dynamicParams = regex.exec(pathname).slice(1);
+      const dynamicHandler = routes[matchedKey][method];
+      const paramKeys = matchedKey
+        .match(/:[^/]+/g)
+        .map((key) => key.substring(1));
+
+      const params = dynamicParams.reduce(
+        (acc, val, i) => ({ ...acc, [paramKeys[i]]: val }),
+        {}
+      );
+
+      request.params = params;
+
+      chosenRoute = dynamicHandler;
+    } else {
+      chosenRoute = routes.notFound.GET;
+    }
+  }
+
+  return Promise.resolve(chosenRoute(request, response)).catch(
     errorHandler(response)
   );
 };

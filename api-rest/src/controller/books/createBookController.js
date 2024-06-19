@@ -17,7 +17,7 @@ export class CreateBookController {
     response.write(
       JSON.stringify({
         bookID,
-        message: "Livro cadastrado com sucesso.",
+        message: "Book registered successfully.",
       })
     );
 

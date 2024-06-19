@@ -7,8 +7,12 @@ import { booksDelete } from "./booksDelete.js";
 const booksService = booksFactory();
 
 export const booksRoute = {
-  "/books:get": booksGet(booksService),
-  "/books:post": booksPost(booksService),
-  "/books:put": booksPut(booksService),
-  "/books:delete": booksDelete(booksService),
+  "/books": {
+    GET: booksGet(booksService),
+    POST: booksPost(booksService),
+  },
+  "/books/:id": {
+    PUT: booksPut(booksService),
+    DELETE: booksDelete(booksService),
+  },
 };

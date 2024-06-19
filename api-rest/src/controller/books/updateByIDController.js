@@ -7,16 +7,17 @@ export class UpdateBookByIDController {
   }
 
   async handle(request, response) {
+    const { id: bookID } = request.params;
     const data = await once(request, "data");
-    const json = JSON.parse(data);
-    const { id, ...book } = json;
-    const bookID = await this.updateByIDUseCase.execute(id, book);
+    const book = JSON.parse(data);
+
+    await this.updateByIDUseCase.execute(bookID, book);
 
     response.writeHead(200, DEFAULT_HEADER);
     response.write(
       JSON.stringify({
         bookID,
-        message: "Livro atualizado com sucesso.",
+        message: "Book updated successfully.",
       })
     );
 
