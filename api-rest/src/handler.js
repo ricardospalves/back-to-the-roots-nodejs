@@ -1,20 +1,25 @@
-import { DEFAULT_HEADER } from "./constants/defaultHeader.js";
+import { RESPONSE_ERRORS } from "./constants/responseErrors.js";
 import { routes } from "./routes/index.js";
 import { removeTrailingSlash } from "./utils/removeTrailingSlash.js";
+import { responseError } from "./utils/responseError.js";
 
 const errorHandler = (response) => {
   return (error) => {
-    console.log("Something went wrong.", error.stack);
+    const errorMessage = error?.message;
 
-    response.writeHead(500, DEFAULT_HEADER);
-    response.write(
-      JSON.stringify({
-        error: true,
-        message: "Internal server error.",
-      })
-    );
+    if (errorMessage in RESPONSE_ERRORS) {
+      const { status, message } = RESPONSE_ERRORS[errorMessage];
 
-    return response.end();
+      return responseError(response, {
+        status,
+        message,
+      });
+    }
+
+    return responseError(response, {
+      status: 500,
+      message: "Internal server error.",
+    });
   };
 };
 
