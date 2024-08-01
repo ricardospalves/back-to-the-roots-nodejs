@@ -2,7 +2,7 @@ import { once } from "node:events";
 import { DEFAULT_HEADER } from "../../constants/defaultHeader.js";
 import { BookEntity } from "../../entities/bookEntity.js";
 import { realTypeof } from "../../utils/realTypeof.js";
-import { RESPONSE_ERRORS } from "../../constants/responseErrors.js";
+import { RESPONSE_ERROR_MESSAGES } from "../../constants/responseErrorMessages.js";
 
 export class CreateBookController {
   constructor(createBookUseCase) {
@@ -14,7 +14,7 @@ export class CreateBookController {
     const body = JSON.parse(data);
 
     if (realTypeof(body) !== "object") {
-      throw new Error(RESPONSE_ERRORS.invalidDataType.id);
+      throw new Error(RESPONSE_ERROR_MESSAGES.invalidDataType.id);
     }
 
     const book = new BookEntity(body);

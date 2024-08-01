@@ -1,5 +1,5 @@
 import { DEFAULT_HEADER } from "../../constants/defaultHeader.js";
-import { RESPONSE_ERRORS } from "../../constants/responseErrors.js";
+import { RESPONSE_ERROR_MESSAGES } from "../../constants/responseErrorMessages.js";
 
 export class DeleteByIDController {
   constructor(deleteByIDUseCase) {
@@ -11,7 +11,7 @@ export class DeleteByIDController {
     const deletedBook = await this.deleteByIDUseCase.execute(bookID);
 
     if (!deletedBook) {
-      throw new Error(RESPONSE_ERRORS.bookNotFound.id);
+      throw new Error(RESPONSE_ERROR_MESSAGES.bookNotFound.id);
     }
 
     response.writeHead(200, DEFAULT_HEADER);

@@ -1,4 +1,4 @@
-import { RESPONSE_ERRORS } from "./constants/responseErrors.js";
+import { RESPONSE_ERROR_MESSAGES } from "./constants/responseErrorMessages.js";
 import { routes } from "./routes/index.js";
 import { removeTrailingSlash } from "./utils/removeTrailingSlash.js";
 import { responseError } from "./utils/responseError.js";
@@ -7,8 +7,8 @@ const errorHandler = (response) => {
   return (error) => {
     const errorMessage = error?.message;
 
-    if (errorMessage in RESPONSE_ERRORS) {
-      const { status, message } = RESPONSE_ERRORS[errorMessage];
+    if (errorMessage in RESPONSE_ERROR_MESSAGES) {
+      const { status, message } = RESPONSE_ERROR_MESSAGES[errorMessage];
 
       return responseError(response, {
         status,

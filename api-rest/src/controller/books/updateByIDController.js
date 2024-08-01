@@ -1,6 +1,6 @@
 import { once } from "node:events";
 import { DEFAULT_HEADER } from "../../constants/defaultHeader.js";
-import { RESPONSE_ERRORS } from "../../constants/responseErrors.js";
+import { RESPONSE_ERROR_MESSAGES } from "../../constants/responseErrorMessages.js";
 import { realTypeof } from "../../utils/realTypeof.js";
 
 export class UpdateBookByIDController {
@@ -14,13 +14,13 @@ export class UpdateBookByIDController {
     const book = JSON.parse(body);
 
     if (realTypeof(book) !== "object") {
-      throw new Error(RESPONSE_ERRORS.invalidDataType.id);
+      throw new Error(RESPONSE_ERROR_MESSAGES.invalidDataType.id);
     }
 
     const updatedBook = await this.updateByIDUseCase.execute(bookID, book);
 
     if (!updatedBook) {
-      throw new Error(RESPONSE_ERRORS.bookNotFound.id);
+      throw new Error(RESPONSE_ERROR_MESSAGES.bookNotFound.id);
     }
 
     response.writeHead(200, DEFAULT_HEADER);

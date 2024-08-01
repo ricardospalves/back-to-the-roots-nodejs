@@ -1,5 +1,5 @@
 import { DEFAULT_HEADER } from "../../constants/defaultHeader.js";
-import { RESPONSE_ERRORS } from "../../constants/responseErrors.js";
+import { RESPONSE_ERROR_MESSAGES } from "../../constants/responseErrorMessages.js";
 
 export class GetBookByIDController {
   constructor(getBookByIDUseCase) {
@@ -11,7 +11,7 @@ export class GetBookByIDController {
     const book = await this.getBookByIDUseCase.execute(bookID);
 
     if (!book) {
-      throw new Error(RESPONSE_ERRORS.bookNotFound.id);
+      throw new Error(RESPONSE_ERROR_MESSAGES.bookNotFound.id);
     }
 
     response.writeHead(200, DEFAULT_HEADER);

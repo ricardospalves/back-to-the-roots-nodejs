@@ -1,4 +1,4 @@
-export const RESPONSE_ERRORS = {
+export const RESPONSE_ERROR_MESSAGES = {
   invalidDataType: {
     id: "invalidDataType",
     status: 400,
