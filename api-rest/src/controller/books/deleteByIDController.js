@@ -1,4 +1,5 @@
 import { DEFAULT_HEADER } from "../../constants/defaultHeader.js";
+import { RESPONSE_ERRORS } from "../../constants/responseErrors.js";
 
 export class DeleteByIDController {
   constructor(deleteByIDUseCase) {
@@ -7,8 +8,11 @@ export class DeleteByIDController {
 
   async handle(request, response) {
     const { id: bookID } = request.params;
+    const deletedBook = await this.deleteByIDUseCase.execute(bookID);
 
-    await this.deleteByIDUseCase.execute(bookID);
+    if (!deletedBook) {
+      throw new Error(RESPONSE_ERRORS.bookNotFound.id);
+    }
 
     response.writeHead(200, DEFAULT_HEADER);
     response.write(
