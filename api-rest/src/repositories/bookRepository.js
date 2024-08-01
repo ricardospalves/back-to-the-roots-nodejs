@@ -47,6 +47,11 @@ export class BooksRepository {
   async updateByID(id, bookFields) {
     const books = await this.#fileContent();
     const bookIndex = await this.#findBookIndexByID(id);
+
+    if (bookIndex === -1) {
+      return null;
+    }
+
     const book = books[bookIndex];
 
     for (const [key, value] of Object.entries(bookFields)) {
@@ -65,6 +70,11 @@ export class BooksRepository {
   async deleteByID(id) {
     const books = await this.#fileContent();
     const bookIndex = await this.#findBookIndexByID(id);
+
+    if (bookIndex === -1) {
+      return null;
+    }
+
     const deletedBook = books.splice(bookIndex, 1);
 
     await this.#save(books);
@@ -74,6 +84,10 @@ export class BooksRepository {
 
   async getByID(id) {
     const books = await this.#findByID(id);
+
+    if (!books) {
+      return null;
+    }
 
     return books;
   }
