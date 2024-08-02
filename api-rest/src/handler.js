@@ -1,10 +1,18 @@
 import { RESPONSE_ERROR_MESSAGES } from "./constants/responseErrorMessages.js";
+import { ValidationError } from "./entities/validationError.js";
 import { routes } from "./routes/index.js";
 import { removeTrailingSlash } from "./utils/removeTrailingSlash.js";
 import { responseError } from "./utils/responseError.js";
 
 const errorHandler = (response) => {
   return (error) => {
+    if (error instanceof ValidationError) {
+      return responseError(response, {
+        status: 422,
+        message: error.message,
+      });
+    }
+
     const errorMessage = error?.message;
 
     if (errorMessage in RESPONSE_ERROR_MESSAGES) {
