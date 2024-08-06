@@ -2,6 +2,16 @@ import { once } from "node:events";
 import { DEFAULT_HEADER } from "../../constants/defaultHeader.js";
 import { RESPONSE_ERROR_MESSAGES } from "../../constants/responseErrorMessages.js";
 import { realTypeof } from "../../utils/realTypeof.js";
+import { validator } from "../../utils/validator.js";
+
+const schema = validator({
+  name: {
+    type: "string",
+  },
+  author: {
+    type: "string",
+  },
+});
 
 export class UpdateBookByIDController {
   constructor(updateByIDUseCase) {
@@ -10,14 +20,19 @@ export class UpdateBookByIDController {
 
   async handle(request, response) {
     const { id: bookID } = request.params;
-    const body = await once(request, "data");
-    const book = JSON.parse(body);
+    const data = await once(request, "data");
+    const body = JSON.parse(data);
 
-    if (realTypeof(book) !== "object") {
+    if (realTypeof(body) !== "object") {
       throw new Error(RESPONSE_ERROR_MESSAGES.invalidDataType.id);
     }
 
-    const updatedBook = await this.updateByIDUseCase.execute(bookID, book);
+    const { name, author } = schema(body);
+
+    const updatedBook = await this.updateByIDUseCase.execute(bookID, {
+      name,
+      author,
+    });
 
     if (!updatedBook) {
       throw new Error(RESPONSE_ERROR_MESSAGES.bookNotFound.id);
